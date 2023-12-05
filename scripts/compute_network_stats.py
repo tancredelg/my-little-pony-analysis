@@ -1,13 +1,7 @@
 import argparse
 import json
-import pandas as pd
 from pathlib import Path
 import networkx as nx
-import matplotlib.pyplot as plt
-import matplotlib.colors as colors
-import matplotlib.cm as cmx
-import numpy as np
-from build_interaction_network import draw_graph
 
 
 def compute_top_centralities(g: nx.Graph, n: int, with_values: bool = False) -> dict:
@@ -53,7 +47,7 @@ def main():
     output_file = Path(args.output)
     output_file.parent.mkdir(exist_ok=True, parents=True)
 
-    top_stats = compute_top_centralities(g, 10, with_values=True)
+    top_stats = compute_top_centralities(g, 3)
 
     with open(output_file, 'w', encoding='utf-8') as file:
         json.dump(top_stats, file, indent=4)

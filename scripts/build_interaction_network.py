@@ -66,8 +66,6 @@ def draw_graph(g: nx.Graph, filepath: str):
     c_norm = colors.Normalize(vmin=min_weight, vmax=max_weight)
     scalar_map = cmx.ScalarMappable(norm=c_norm, cmap=plt.get_cmap('jet'))
 
-    # edges = sorted(g.edges(data='weight'), key=lambda x: x[2], reverse=True)
-
     for edge in g.edges(data='weight'):
         weight = edge[2]
         width = (weight / max_weight) * 256
